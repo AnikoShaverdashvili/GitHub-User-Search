@@ -54,14 +54,14 @@
 }
 
 @media (min-width: 1440px) {
-  /* body {
+  body {
     padding: 0;
     padding-bottom: 170px;
   }
   .header,
   .card {
     width: 730px;
-  } */
+  }
   .avatar-m {
     display: none;
   }
@@ -74,15 +74,11 @@
   }
   .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
   .wrapper {
     display: flex;
     flex-direction: column;
+    margin-left: 48px;
   }
-  /* .users-info {
-    display: flex;
-    column-gap: 37px;
-    padding: 48px;
-  } */
 }
