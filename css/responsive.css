@@ -1,0 +1,88 @@
+@media (min-width: 768px) {
+  body {
+    padding: 0 98px;
+    padding-bottom: 236px;
+  }
+
+  .btn,
+  .login {
+    font-size: 16px;
+    line-height: 23.7px;
+  }
+  .name {
+    font-size: 26px;
+    line-height: 38.51px;
+  }
+  .form {
+    padding: 10px 10px 10px 32px;
+  }
+  .users-info {
+    padding: 40px;
+  }
+  .general {
+    column-gap: 40px;
+  }
+  .join-date,
+  .locationTxt {
+    font-size: 15px;
+    line-height: 22.22px;
+  }
+  .bio {
+    font-size: 15px;
+    line-height: 25px;
+  }
+
+  .stat-title {
+    font-size: 13px;
+    line-height: 19.25px;
+  }
+  .stat-amount {
+    font-size: 22px;
+    line-height: 32.58px;
+  }
+  .stat {
+    text-align: left;
+  }
+  .reach-user {
+    grid-template-columns: auto auto;
+    width: 100%;
+  }
+  .location:nth-child(3) {
+    grid-column: 2/2;
+    grid-row: 1/2;
+  }
+}
+
+@media (min-width: 1440px) {
+  /* body {
+    padding: 0;
+    padding-bottom: 170px;
+  }
+  .header,
+  .card {
+    width: 730px;
+  } */
+  .avatar-m {
+    display: none;
+  }
+
+  .avatar-d {
+    display: inline-block;
+    width: 117px;
+    height: 117px;
+    border-radius: 50%;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  /* .users-info {
+    display: flex;
+    column-gap: 37px;
+    padding: 48px;
+  } */
+}

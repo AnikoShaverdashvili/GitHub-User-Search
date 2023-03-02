@@ -228,6 +228,7 @@ body {
   line-height: 16px;
   margin-bottom: 8px;
   color: #4b6a9b;
+  text-align: center;
   text-transform: capitalize;
 }
 .stat-title.dark {
@@ -271,6 +272,9 @@ body {
   text-decoration: none;
 }
 
+.fill {
+  fill: #4b6a9b;
+}
 .fill.dark {
-  color: white;
+  fill: white;
 }

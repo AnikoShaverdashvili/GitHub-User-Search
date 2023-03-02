@@ -22,7 +22,8 @@ const link = document.querySelector(".link");
 const twitter = document.querySelector(".twitter");
 const office = document.querySelector(".office");
 const locationTxt = document.querySelectorAll(".locationTxt");
-const fillSvg = document.querySelectorAll(".fill");
+const error = document.querySelector(".err");
+const fills = document.querySelectorAll(".fill");
 //create object
 const octocat = {
   avatar_url: "https://avatars.githubusercontent.com/u/583231?v=4",
@@ -60,6 +61,11 @@ const octocat = {
 };
 // end object create
 
+//add event listener for input to clear error message when user exists
+input.addEventListener("input", () => {
+  error.textContent = "";
+});
+
 //function to transform date
 
 const dateTransformer = (date) => {
@@ -91,7 +97,9 @@ const displayInfo = (user) => {
   }
   if (user.blog) {
     link.textContent = user.blog;
+    link.href = user.blog;
   } else {
+    link.href = "#";
     notAvailable(link);
   }
   if (user.twitter_username) {
@@ -144,20 +152,25 @@ const flipTheme = function (theme) {
   Array.from(locationTxt).forEach((location) =>
     location.classList.toggle("dark")
   );
-  Array.from(fillSvg).forEach((fill) => fill.classList.toggle("dark"));
+  Array.from(fills).forEach((fill) => fill.classList.toggle("dark"));
 };
 
+//click events for changing themes
 moon.addEventListener("click", () => flipTheme("dark"));
 sun.addEventListener("click", () => flipTheme("light"));
 
+//add click event for button , when button is pressed user will be found
 btn.addEventListener("click", async (event) => {
   event.preventDefault();
-
   try {
-    const response = await axios.get(
-      "https://api.github.com/users/" + input.value
-    );
-    const user = response.data;
+    const response = await fetch("https://api.github.com/users/" + input.value);
+    if (!response.ok) {
+      throw new Error("No result");
+    }
+    const user = await response.json();
+    displayInfo(user);
     input.value = "";
-  } catch (err) {}
+  } catch (err) {
+    error.textContent = err.message;
+  }
 });
