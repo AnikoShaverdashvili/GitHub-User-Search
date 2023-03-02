@@ -1,7 +1,10 @@
+/* import font from google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 
+/* body base styles */
 body {
   padding: 0 24px;
+  padding-bottom: 79px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -24,7 +27,6 @@ body {
   --semiDark: #1e2a47;
   --error: #f74646;
 }
-/* end colors */
 
 /* header start */
 .header {
@@ -61,7 +63,6 @@ body {
   align-items: center;
   column-gap: 16px;
 }
-
 #sun {
   display: none;
 }
@@ -69,19 +70,26 @@ body {
 /* end header */
 
 /* start form */
-.form {
+/* card and card.dark is the class to stye both: form and the card */
+.card {
+  background-color: var(--white);
   width: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 16px 30px -10px #4660bb33;
+}
+.form {
   display: flex;
+  align-items: center;
   background-color: var(--white);
   margin-top: 35px;
   padding: 7px 7px 7px 16px;
-  border-radius: 15px;
-  box-shadow: 0px 16px 30px -10px #4660bb33;
-  display: flex;
-  align-items: center;
+}
+.card.dark {
+  background-color: var(--semiDark);
+  box-shadow: none;
 }
 
-#user {
+.user {
   border: none;
   outline: none;
   width: 190px;
@@ -93,8 +101,15 @@ body {
   color: #222731;
 }
 
-#user::placeholder {
+.user::placeholder {
   color: var(--darkSky);
+}
+.user.dark {
+  color: white;
+  background-color: transparent;
+}
+.user.dark::placeholder {
+  color: white;
 }
 
 .btn {
@@ -112,4 +127,150 @@ body {
   cursor: pointer;
   border-radius: 10px;
   margin-left: auto;
+}
+
+.err {
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--error);
+  height: 25px;
+  width: fit-content;
+  margin-right: auto;
+}
+
+/* end form */
+/* start card */
+
+.users-info {
+  padding: 32px 24px 48px 24px;
+}
+
+.avatar-d {
+  display: none;
+}
+.info {
+  width: 100%;
+}
+
+.general {
+  display: flex;
+  align-items: center;
+  column-gap: 19px;
+}
+.avatar-m {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--darkBlue);
+  text-transform: capitalize;
+}
+.name.dark {
+  color: var(--white);
+}
+.login {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  color: #0079ff;
+}
+.join-date {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  color: #697c9a;
+  margin-top: 6px;
+}
+.join-date.dark {
+  color: var(--white);
+}
+
+.bio {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 25px;
+  color: #4b6a9b;
+  margin-top: 34px;
+  text-align: Left;
+}
+.bio.dark {
+  color: var(--white);
+}
+
+.statistic {
+  height: 85px;
+  display: flex;
+  align-items: center;
+  margin-top: 23px;
+  border-radius: 10px;
+  background-color: #f6f8ff;
+  justify-content: space-around;
+}
+
+.statistic.dark {
+  background-color: #141d2f;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-title {
+  width: 400;
+  font-size: 11px;
+  line-height: 16px;
+  margin-bottom: 8px;
+  color: #4b6a9b;
+  text-transform: capitalize;
+}
+.stat-title.dark {
+  color: white;
+}
+.stat-amount {
+  color: #2b3442;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23.7px;
+}
+.stat-amount.dark {
+  color: white;
+}
+
+.reach-user {
+  display: grid;
+  grid-template-columns: auto;
+  margin-top: 24px;
+}
+.location {
+  display: flex;
+  align-items: center;
+  column-gap: 19px;
+  margin-bottom: 17px;
+}
+
+.location:last-child {
+  margin-bottom: 0px;
+}
+.locationTxt {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 19px;
+  color: var(--darkSky);
+}
+.locationTxt.dark {
+  color: var(--white);
+}
+.locationLink {
+  text-decoration: none;
+}
+
+.fill.dark {
+  color: white;
 }

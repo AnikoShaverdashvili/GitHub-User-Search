@@ -1,10 +1,28 @@
 const moon = document.querySelector("#moon");
 const sun = document.querySelector("#sun");
+const cards = document.querySelectorAll(".card");
 const title = document.querySelector(".title");
 const themeTxt = document.querySelector(".themeTxt");
 const input = document.querySelector("#user");
 const btn = document.querySelector(".btn");
-
+const avatarDesktop = document.querySelector(".avatar-d");
+const avatarMobile = document.querySelector(".avatar-m");
+const name = document.querySelector(".name");
+const login = document.querySelector(".login");
+const joinDate = document.querySelector(".join-date");
+const bio = document.querySelector(".bio");
+const repository = document.querySelector(".rep");
+const followers = document.querySelector(".followers");
+const following = document.querySelector(".following");
+const statistic = document.querySelector(".statistic");
+const statisticTitle = document.querySelectorAll(".stat-title");
+const statisticAmount = document.querySelectorAll(".stat-amount");
+const address = document.querySelector(".address");
+const link = document.querySelector(".link");
+const twitter = document.querySelector(".twitter");
+const office = document.querySelector(".office");
+const locationTxt = document.querySelectorAll(".locationTxt");
+const fillSvg = document.querySelectorAll(".fill");
 //create object
 const octocat = {
   avatar_url: "https://avatars.githubusercontent.com/u/583231?v=4",
@@ -40,12 +58,68 @@ const octocat = {
   updated_at: "2023-01-22T12:13:51Z",
   url: "https://api.github.com/users/octocat",
 };
+// end object create
 
+//function to transform date
+
+const dateTransformer = (date) => {
+  const dateObj = new Date(date);
+  const dateString = dateObj.toDateString();
+  const [weekday, month, day, year] = dateString.split(" ");
+  return `${day} ${month} ${year}`;
+};
+
+// funcion to display the user information
+
+const displayInfo = (user) => {
+  avatarMobile.src = user.avatar_url;
+  avatarDesktop.src = user.avatar_url;
+  name.textContent = user.name;
+  login.textContent = "@" + user.login;
+  const date = dateTransformer(user.created_at);
+  joinDate.textContent = "Joined " + date;
+  bio.textContent =
+    user.bio ||
+    "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.";
+  repository.textContent = user.public_repos;
+  followers.textContent = user.followers;
+  following.textContent = user.following;
+  if (user.location) {
+    address.textContent = user.location;
+  } else {
+    notAvailable(address);
+  }
+  if (user.blog) {
+    link.textContent = user.blog;
+  } else {
+    notAvailable(link);
+  }
+  if (user.twitter_username) {
+    twitter.textContent = user.twitter_username;
+  } else {
+    notAvailable(twitter);
+  }
+  if (user.company) {
+    office.textContent = user.company;
+  } else {
+    notAvailable(office);
+  }
+};
+
+// function for not available locations
+const notAvailable = (location) => {
+  location.textContent = "Not Available";
+  location.parentElement.style.opacity = 0.5;
+};
+
+displayInfo(octocat);
+
+//function for fliping the thems
 const flipTheme = function (theme) {
   if (theme === "dark") {
     moon.style.display = "none";
     sun.style.display = "block";
-    document.body.style.backgroundColor = "#1E2A47";
+    document.body.style.backgroundColor = "#141D2F";
     themeTxt.textContent = "light";
   } else {
     moon.style.display = "block";
@@ -55,10 +129,27 @@ const flipTheme = function (theme) {
   }
   title.classList.toggle("dark");
   themeTxt.classList.toggle("dark");
+  input.classList.toggle("dark");
+  name.classList.toggle("dark");
+  joinDate.classList.toggle("dark");
+  Array.from(cards).forEach((card) => card.classList.toggle("dark"));
+  bio.classList.toggle("dark");
+  statistic.classList.toggle("dark");
+
+  Array.from(statisticAmount).forEach((amount) =>
+    amount.classList.toggle("dark")
+  );
+  Array.from(statisticTitle).forEach((title) => title.classList.toggle("dark"));
+
+  Array.from(locationTxt).forEach((location) =>
+    location.classList.toggle("dark")
+  );
+  Array.from(fillSvg).forEach((fill) => fill.classList.toggle("dark"));
 };
 
 moon.addEventListener("click", () => flipTheme("dark"));
 sun.addEventListener("click", () => flipTheme("light"));
+
 btn.addEventListener("click", async (event) => {
   event.preventDefault();
 
